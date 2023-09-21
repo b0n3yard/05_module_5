@@ -41,26 +41,29 @@ var count = 0;
 for(x = 0; x < 24; x++){
 var num = x + 1;
 var str = 'hour-';
+var wish = 'testing';
 var nmstr = num.toString();
+var com2 = wish + nmstr;
 var com = str + nmstr;
 count = count +1;
 console.log(count)
 // var test = $('.hi')
 if(num < day){
-test.append('<div class = "row time-block past testing"' + 'id = "'+ com+ '" >')
+  test.append('<div class = "row time-block past '+ com2 + '" '+'id = "'+ com+ '" >')
 }else if( num > day){
-  test.append('<div class = "row time-block future testing"' + 'id = "'+ com+ '" >')
+  test.append('<div class = "row time-block future '+ com2 + '" '+'id = "'+ com+ '">')
 }else if(num === day){
-  test.append('<div class = "row time-block present testing"' + 'id = "'+ com+ '" >')
+  test.append('<div class = "row time-block present '+ com2 + '" '+'id = "'+ com+ '">')
 }
-var tweb = $(".testing");
-
-// tweb.append($div,'class = " col-2 col-md-1 hour text-center py-3">' + nmstr + "AM");
+var tweb = $('.'+com2);
+tweb.append('<div class = " col-2 col-md-1 hour text-center py-3">' + nmstr + "AM"+'</div>');
+tweb.append('<textarea class = "col-8 col-md-10 description"' + 'rows = "3">');
+tweb.append('<button class = "btn saveBtn col-2 col-md-1 ending"' + 'aria-label = "save">');
+// tweb.append($('section'),'class = " col-2 col-md-1 hour text-center py-3">' + nmstr + "AM");
 }
 
 var num = x + 1;
-tweb.append('<div class = " col-2 col-md-1 hour text-center py-3">' + nmstr + "AM"+'</div>');
-tweb.append('<textarea class = "col-8 col-md-10 description"' + 'rows = "3">');
+
 
 tweb.append('<button class = "btn saveBtn col-2 col-md-1 ending"' + 'aria-label = "save">');
 
