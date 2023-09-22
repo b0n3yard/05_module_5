@@ -21,24 +21,27 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
-// var num = 5;
-// var str = 'hour-';
-// var nmstr = num.toString();
-// var com = str + nmstr;
-// console.log(com)
-// console.log(typeof com)
+ var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+var swdate = $('#currentDay')
+var svmsg = $('.svmsg')
 var nine = $('#hour-9')
 var test = $('.hi')
-// var tweb = $(".testing");
-// var tweb2 = $('.ending');
-// var test = $('.hi')
+// var test2 = $('.hi').find('.testing9')
+var btn = $('button')
+var date = dayjs().date()
 var day = dayjs().hour()
 console.log(day)
-var newday = new Date().getDate();
+var newday = new Date()
+var mnth = months[newday.getMonth()];
 console.log(newday)
 var count = 0;
+console.log(mnth + ' '+ date)
+// console.log (mnth)
+swdate.append(mnth + ' '+ date);
 
-for(x = 0; x < 24; x++){
+
+
+for(x = 8; x < 17; x++){
 var num = x + 1;
 var str = 'hour-';
 var wish = 'testing';
@@ -56,23 +59,52 @@ if(num < day){
   test.append('<div class = "row time-block present '+ com2 + '" '+'id = "'+ com+ '">')
 }
 var tweb = $('.'+com2);
-tweb.append('<div class = " col-2 col-md-1 hour text-center py-3">' + nmstr + "AM"+'</div>');
+if (num > 12){
+  var nwnm = num - 12;
+  tweb.append('<div class = " col-2 col-md-1 hour text-center py-3">' + nwnm + "PM"+'</div>');
+}else{
+  tweb.append('<div class = " col-2 col-md-1 hour text-center py-3">' + nmstr + "AM"+'</div>');
+}
+
 tweb.append('<textarea class = "col-8 col-md-10 description"' + 'rows = "3">');
+var amndtxt = localStorage.getItem( com)
+var set = $('#' + com + ' ' + 'textarea')
+set.val(amndtxt)
 tweb.append('<button class = "btn saveBtn col-2 col-md-1 ending"' + 'aria-label = "save">');
 // tweb.append($('section'),'class = " col-2 col-md-1 hour text-center py-3">' + nmstr + "AM");
 }
 
 var num = x + 1;
-
-
-tweb.append('<button class = "btn saveBtn col-2 col-md-1 ending"' + 'aria-label = "save">');
-
-
 var tweb2 = $('.ending');
 tweb2.append('<i class= "fas fa-save"' + 'aria-hidden = "true">');
+var test2 = $('.hi').find('button')
+
+function savfnctin(e){
+  
+  // var textarea = test2.prev();
+  // var hlp = textarea.find('.description')
+  // console.log(hlp)
+  // console.log(text)
+  var des = $('#' + e.target.parentElement.id + ' '+ 'textarea')
+  var text = des.val();
+ 
+  console.log(text);
+  // console.log(textarea)
+    var hly = localStorage.setItem(e.target.parentElement.id,  text )
+    console.log(e.target.parentElement.id)
+    console.log(e.target.id)
+    svmsg.append('<p>'+ 'saved to localstorage' +'</p>')
+    // var newtxt = 'job done';
+    // des.val(newtxt);
+    
+
+}
+// tweb.append('<button class = "btn saveBtn col-2 col-md-1 ending"' + 'aria-label = "save">');
+
 
 
 console.log(count)
+test2.on('click', savfnctin)
 // nine.removeClass('past');
 // nine.addClass('future')
 // .attr('id', 'hour-5');
