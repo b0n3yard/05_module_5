@@ -23,7 +23,7 @@ $(function () {
 });
  var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 var swdate = $('#currentDay')
-
+var svmsg = $('.svmsg')
 var nine = $('#hour-9')
 var test = $('.hi')
 // var test2 = $('.hi').find('.testing9')
@@ -93,6 +93,7 @@ function savfnctin(e){
     var hly = localStorage.setItem(e.target.parentElement.id,  text )
     console.log(e.target.parentElement.id)
     console.log(e.target.id)
+    svmsg.append('<p>'+ 'saved to localstorage' +'</p>')
     // var newtxt = 'job done';
     // des.val(newtxt);
     
